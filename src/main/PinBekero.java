@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Color;
+import static java.awt.Color.red;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -132,21 +133,21 @@ public class PinBekero extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void chbMutatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbMutatActionPerformed
-        if(chbMutat.isSelected()){
-            for (int i = 0; i < pin.length(); i++) {
-                int gomb = Integer.parseInt(pin.charAt(i)+"");
-                jPanel1.getComponent(gomb).setBackground(Color.red);
-            }
-        }else{
+          if (chbMutat.isSelected()) {
+            szinBeallit(Color.RED);
+         } else {
             chbMutat.setEnabled(false);
             kattDb = 0;
-            for (int i = 0; i < pin.length(); i++) {
-                int gomb = Integer.parseInt(pin.charAt(i)+"");
-                jPanel1.getComponent(gomb).setBackground(Color.LIGHT_GRAY);
-            }
-        }
+            szinBeallit(Color.LIGHT_GRAY);
+          }
     }//GEN-LAST:event_chbMutatActionPerformed
-
+    
+    public void szinBeallit(Color szin){
+        for (int i = 0; i < pin.length(); i++) {
+            int gomb = Integer.parseInt(pin.charAt(i)+"");
+            jPanel1.getComponent(gomb).setBackground(szin);
+    }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -177,8 +178,10 @@ public class PinBekero extends javax.swing.JFrame {
                 new PinBekero().setVisible(true);
             }
         });
+        
+    
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chbMutat;
     private javax.swing.JButton jButton1;
