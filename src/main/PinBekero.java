@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -133,6 +134,7 @@ public class PinBekero extends javax.swing.JFrame {
                         chbMutat.setEnabled(true);
                         Path path = Paths.get("pin.txt");
                         try {
+                            Files.deleteIfExists(path);
                             Files.writeString(path, pin);
                         } catch (IOException ex) {
                             Logger.getLogger(PinBekero.class.getName()).log(Level.SEVERE, null, ex);
