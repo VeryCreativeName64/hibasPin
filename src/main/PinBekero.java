@@ -4,8 +4,15 @@ import java.awt.Color;
 import static java.awt.Color.red;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class PinBekero extends javax.swing.JFrame {
 
@@ -124,7 +131,14 @@ public class PinBekero extends javax.swing.JFrame {
                     } 
                     if(kattDb == 4) {
                         chbMutat.setEnabled(true);
+                        Path path = Paths.get("pin.txt");
+                        try {
+                            Files.writeString(path, pin);
+                        } catch (IOException ex) {
+                            Logger.getLogger(PinBekero.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         JOptionPane.showMessageDialog(rootPane, "Pin mentve!");
+                        
                     }
                     
                 }
